@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from "express";
+import express, { Request, Response } from "express";
 import apiRouter from "./routes/api";
 import dotenv from "dotenv";
 
@@ -15,7 +15,7 @@ app.use((_req: Request, res: Response) => {
   res.status(404).json({ error: "Not Found" });
 });
 
-app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
+app.use((err: any, _req: Request, res: Response) => {
   console.error("Unhandled error:", err);
   res.status(500).json({ error: "Internal Server Error" });
 });
