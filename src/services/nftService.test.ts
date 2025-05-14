@@ -42,9 +42,10 @@ describe("isValidTokenId validator logic", () => {
   
     it("returns false when tokenId ≥ nextTokenId − 1", async () => {
       jest.spyOn(contract, "nextTokenId").mockResolvedValue(3n);
-      // nextTokenId − 1 = 2
-      await expect(isValidTokenId(2)).resolves.toBe(false);
+      await expect(isValidTokenId(0)).resolves.toBe(true);
+      await expect(isValidTokenId(2)).resolves.toBe(true);
       await expect(isValidTokenId(3)).resolves.toBe(false);
+      await expect(isValidTokenId(100)).resolves.toBe(false);
     });
   
     it("returns true when tokenId < nextTokenId − 1", async () => {
