@@ -14,5 +14,5 @@ export const isValidTokenId = async (tokenId: number): Promise<boolean> => {
 
 const validateTokenId = async (tokenId: number) =>{
     const nextTokenId = await contract.nextTokenId() as bigint;
-    return tokenId >= 0 && tokenId < (nextTokenId - 1n);
+    return tokenId >= 0 && tokenId < nextTokenId;
 }
